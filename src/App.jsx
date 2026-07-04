@@ -41,7 +41,7 @@ function App() {
         action=""
         className="flex flex-col items-center justify-center mt-[5%] "
       >
-        <h1 className="flex items-center justify-center font-semibold text-4xl text-[#aaa]">
+        <h1 className="flex items-center justify-center font-semibold text-4xl">
           Contact Us
         </h1>
         <input
@@ -68,7 +68,7 @@ function App() {
         <textarea
           type="text"
           name="message"
-          cols={50}
+          cols={40}
           rows={7}
           placeholder="Leave a message"
           className="rounded-lg border-2 border-[#aaa] border-solid  p-5 w-85 mt-5"

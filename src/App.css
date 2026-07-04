@@ -7,38 +7,63 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Global dark theme */
+html, body {
+  height: 100%;
+  background-color: #1f2937; /* dark gray (gray-800) */
+  color: #ffffff; /* white text */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Ensure app root uses inherited colors */
+#root {
+  color: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Form inputs: slightly lighter background with white text */
+input, textarea, select {
+  background-color: #374151; /* gray-700 */
+  color: #ffffff;
+  border: 2px solid #4b5563; /* gray-600 */
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
-.card {
-  padding: 2em;
+/* Placeholder text should be white for better contrast */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #ffffff;
+  opacity: 1; /* ensure full opacity */
 }
 
-.read-the-docs {
-  color: #888;
+/* Vendor-specific fallbacks */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+  color: #ffffff;
 }
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+select::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+select:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+/* Highlight on hover; keep keyboard focus visible via :focus-visible */
+input:hover, textarea:hover, select:hover,
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  background-color: #4b5563; /* slightly lighter */
+  border-color: #60a5fa; /* blue-400 for highlight */
+  box-shadow: 0 8px 20px rgba(96,165,250,0.12);
+  outline: none;
+}
+
+/* Buttons: keep accent but ensure contrast on dark background */
+button {
+  color: #ffffff;
+}
+
