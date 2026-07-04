@@ -5,64 +5,59 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-/* Global dark theme */
-html, body {
-  height: 100%;
-  background-color: #1f2937; /* dark gray (gray-800) */
-  color: #ffffff; /* white text */
-}
-
-/* Ensure app root uses inherited colors */
-#root {
   color: inherit;
 }
 
-/* Form inputs: slightly lighter background with white text */
-input, textarea, select {
-  background-color: #374151; /* gray-700 */
+html,
+body {
+  height: 100%;
+  background-color: #1f2937;
   color: #ffffff;
-  border: 2px solid #4b5563; /* gray-600 */
+}
+
+input,
+textarea,
+select {
+  background-color: #374151;
+  color: #ffffff;
+  border: 2px solid #4b5563;
   transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
-/* Placeholder text should be white for better contrast */
 input::placeholder,
-textarea::placeholder,
-select::placeholder {
-  color: #ffffff;
-  opacity: 1; /* ensure full opacity */
-}
-
-/* Vendor-specific fallbacks */
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder,
-select::-webkit-input-placeholder {
-  color: #ffffff;
-}
-input::-moz-placeholder,
-textarea::-moz-placeholder,
-select::-moz-placeholder {
+textarea::placeholder {
   color: #ffffff;
   opacity: 1;
 }
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder,
-select:-ms-input-placeholder {
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
   color: #ffffff;
 }
 
-/* Highlight on hover; keep keyboard focus visible via :focus-visible */
-input:hover, textarea:hover, select:hover,
-input:focus-visible, textarea:focus-visible, select:focus-visible {
-  background-color: #4b5563; /* slightly lighter */
-  border-color: #60a5fa; /* blue-400 for highlight */
-  box-shadow: 0 8px 20px rgba(96,165,250,0.12);
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+input:hover,
+textarea:hover,
+select:hover,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  background-color: #4b5563;
+  border-color: #60a5fa;
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.12);
   outline: none;
 }
 
-/* Buttons: keep accent but ensure contrast on dark background */
 button {
   color: #ffffff;
 }
