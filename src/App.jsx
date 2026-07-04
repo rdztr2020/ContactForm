@@ -105,7 +105,7 @@ function App() {
         <div
           role="status"
           aria-live="polite"
-          className={`mx-auto mb-4 w-85 rounded-full px-4 py-2 text-sm ${feedback.type === "error" ? "bg-red-600 text-white" : "bg-green-600 text-white"}`}
+          className={`mx-auto mb-4 w-fit max-w-[90%] rounded-full px-4 py-2 text-sm ${feedback.type === "error" ? "bg-red-600 text-white" : "bg-green-600 text-white"}`}
         >
           {feedback.message}
         </div>
