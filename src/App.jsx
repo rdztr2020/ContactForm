@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import "./App.css";
 
 const RATE_LIMIT_MS = 15000;
 const MAX_MESSAGE_LENGTH = 2000;
@@ -100,70 +101,104 @@ function App() {
   };
 
   return (
-    <div>
-      {feedback.message && (
-        <div
-          role="status"
-          aria-live="polite"
-          className={`mx-auto mb-4 w-fit max-w-[90%] rounded-full px-4 py-2 text-sm ${feedback.type === "error" ? "bg-red-600 text-white" : "bg-green-600 text-white"}`}
-        >
-          {feedback.message}
-        </div>
-      )}
-      <form
-        ref={form}
-        onSubmit={sendEmail}
-        action=""
-        className="flex flex-col items-center justify-center mt-[5%] "
-      >
-        <h1 className="flex items-center justify-center font-semibold text-4xl">
-          Contact Us
-        </h1>
-        <input
-          type="text"
-          name="user_name"
-          placeholder="Enter fullname"
-          className="rounded-full border-2 border-[#aaa] border-solid p-5 w-85 mt-5"
-          required
-        />
-        <input
-          type="email"
-          name="user_email"
-          placeholder="Enter email"
-          className="rounded-full border-2 border-[#aaa] border-solid p-5 w-85 mt-5"
-          required
-        />
-        <input
-          type="text"
-          name="subject"
-          placeholder="Enter Subject"
-          className="rounded-full border-2 border-[#aaa] border-solid p-5 w-85 mt-5"
-          required
-        />
-        <textarea
-          type="text"
-          name="message"
-          cols={40}
-          rows={7}
-          placeholder="Leave a message"
-          className="rounded-lg border-2 border-[#aaa] border-solid  p-5 w-85 mt-5"
-        />
-        <input
-          type="text"
-          name={HONEYPOT_FIELD_NAME}
-          tabIndex={-1}
-          autoComplete="off"
-          className="hidden"
-        />
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="bg-[#646cff] p-5 text-white rounded-full border-none font-semibold cursor-pointer w-85 mt-5 disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </button>
-      </form>
-    </div>
+    <main className="contact-page">
+      <section className="contact-card" aria-label="Contact us">
+        <aside className="contact-aside">
+          <div className="contact-brand">
+            <span className="contact-brand-mark" aria-hidden="true">✦</span>
+            <span>We'd love to hear from you</span>
+          </div>
+          <div className="aside-copy">
+            <p className="aside-eyebrow">Get in touch</p>
+            <h2>Let’s start a conversation.</h2>
+            <p className="aside-description">
+              Have a question or an idea? Send us a note and we’ll get back to you as soon as we can.
+            </p>
+          </div>
+          <ul className="contact-details">
+            <li className="contact-detail">
+              <span className="contact-detail-icon" aria-hidden="true">@</span>
+              <span>We typically reply within 1–2 business days</span>
+            </li>
+          </ul>
+        </aside>
+
+        <form ref={form} onSubmit={sendEmail} className="contact-form">
+          <p className="form-eyebrow">Contact us</p>
+          <h1>Send us a message</h1>
+          <p className="form-intro">Fill in the form below and our team will be in touch.</p>
+
+          {feedback.message && (
+            <div
+              role="status"
+              aria-live="polite"
+              className={`form-feedback ${feedback.type === "error" ? "form-feedback--error" : "form-feedback--success"}`}
+            >
+              {feedback.message}
+            </div>
+          )}
+
+          <div className="form-fields">
+            <div className="form-field">
+              <label htmlFor="user_name">Full name</label>
+              <input
+                id="user_name"
+                type="text"
+                name="user_name"
+                placeholder="Jane Smith"
+                autoComplete="name"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="user_email">Email address</label>
+              <input
+                id="user_email"
+                type="email"
+                name="user_email"
+                placeholder="jane@example.com"
+                autoComplete="email"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="subject">Subject</label>
+              <input
+                id="subject"
+                type="text"
+                name="subject"
+                placeholder="How can we help?"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                placeholder="Tell us a little more about what you need..."
+                required
+              />
+            </div>
+          </div>
+
+          <input
+            type="text"
+            name={HONEYPOT_FIELD_NAME}
+            tabIndex={-1}
+            autoComplete="off"
+            className="honeypot"
+            aria-hidden="true"
+          />
+          <button type="submit" disabled={isSubmitting} className="submit-button">
+            {isSubmitting ? "Sending..." : "Send message"}
+            {!isSubmitting && <span className="submit-arrow" aria-hidden="true">→</span>}
+          </button>
+          <p className="form-note">Your information will only be used to respond to your inquiry.</p>
+        </form>
+      </section>
+    </main>
   );
 }
 
